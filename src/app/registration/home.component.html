@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide Navbar</title>
+   
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Add the jQuery UI stylesheet -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+    <div class="navbar">
+        <img src="/assets/images/camera lens illustration logo design.png" alt="Logo" class="logo">
+        <h1>Video Management System</h1>
+    </div>
+
+    <div class="main">
+
+        <input type="checkbox" id="chk" aria-hidden="true">
+
+        <div class="signup">
+            <form action="#" method="POST">
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input type="text" name="firstname" [(ngModel)]="signupForm.firstname" placeholder="Firstname" required="">
+                <input type="text" name="lastname" [(ngModel)]="signupForm.lastname" placeholder="Lastname" required="">
+                <input type="email" name="email" [(ngModel)]="signupForm.email" placeholder="Email" required="">
+                <input type="text" name="mobile" [(ngModel)]="signupForm.mobile" placeholder="Phone number" required="">
+                <input type="password" name="password" [(ngModel)]="signupForm.password" placeholder="Password" required="">
+                <input type="password" name="confirm_password" [(ngModel)]="signupForm.confirm_password" placeholder="Confirm password" required="">
+                <input type="date" name="dob" id="dob" class="datepicker" [(ngModel)]="signupForm.dob" placeholder="yyyy/mm/dd" required="">
+                
+                <label class="checkbox-label">
+                    <input type="checkbox" id="termsCheckbox" name="termsCheckbox" [(ngModel)]="signupForm.termsCheckbox" required>
+                    I agree to the&nbsp;<a href="#" name="terms">terms & conditions</a>
+                </label>
+        
+                <button (click)="register()">Sign-Up</button>
+            </form>
+        </div>
+        <div class="login">
+            <form action="#" method="POST" (submit)="login($event)">
+                <label aria-hidden="true" ></label>
+              <label for="chk" aria-hidden="true" (click)="hideForgotPassword()"style="margin-top: -45px;font: size 20px;">Login</label>
+              <input type="text" name="identifier" [(ngModel)]="loginForm.identifier" placeholder="Email or Phone number" required="">
+              <input type="password" name="password" [(ngModel)]="loginForm.password" placeholder="Password" required="">
+              <button type="button" (click)="toggleForgotPassword()">Forgot Password?</button>
+              <button (click)="login($event)">Login</button>
+            </form>
+          </div>
+
+          <div class="forgot-password-card" *ngIf="showForgotPassword">
+            <label aria-hidden="true" style="font-size: 20px;margin-top: 20px;color: #286fdb;">Forgot-Password</label>
+            <label for="chk" aria-hidden="true" class="back-label" (click)="goBackToLogin()" style="color: whitesmoke;">Back to Log-in page</label>
+            <input type="text" name="email"[(ngModel)]="forgotPasswordForm.email" placeholder="Enter your email" required="" style="margin-top:80px;">
+            <button type="button" (click)="sendResetLink()" class="button3" style="margin-top: 40px;">Submit</button>
+            <div *ngIf="linkSent" style="color: black; margin-top: 20px;">Link is successfully sent to your Mail</div>
+        </div>
+       
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $(function() {
+        $(".datepicker").datepicker({
+            dateFormat: "yy/mm/dd"
+        });
+    });
+
+</script>
+    </div>
+
+</body>
+</html>
